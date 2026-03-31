@@ -112,6 +112,21 @@ public class Configuration : PluginConfiguration, IPluginConfiguration
     public bool EnableDecomboFire2InRed = false;
     public bool EnableDecomboBlizzardInCyan = false;
     public bool EnableDecomboBlizzard2InCyan = false;
+    public bool EnableDecomboManafiction = false;
+    public bool EnableDecomboTen_Chi_Jin = false;
+    public bool EnableDecomboInner_Release = false;
+    public bool EnableDecomboSoulsow = false;
+    public bool EnableDecomboReawaken = false;
+    public bool EnableDecomboVicewinder = true;
+    public bool EnableDecomboVicepit = true;
+    public bool EnableDecomboHunters_Den = true;
+    public bool EnableDecomboSwiftskins_Den = true;
+    public bool EnableDecomboHunters_Coil = true;
+    public bool EnableDecomboSwiftskins_Coil = true;
+    public bool EnableDecomboHindsting_Strike = true;
+    public bool EnableDecomboFlanksbane_Fang = true;
+    public bool EnableDecomboBloodied_Maw = true;
+    public bool EnableDecomboJagged_Maw = true;
 
     public override void Initialize() { }
 

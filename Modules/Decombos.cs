@@ -14,16 +14,49 @@ public unsafe class Decombos : PluginModule
         Fire_in_Red = 34650,
         Blizzard_in_Cyan = 34653,
         Fire_II_in_Red = 34656,
-        Blizzard_II_in_Cyan = 34659
+        Blizzard_II_in_Cyan = 34659,
+        
+        Manafiction = 7521,
+        Ten_Chi_Jin = 7403,
+        Inner_Release = 7389,
+        Soulsow = 24387,
+        Reawaken = 34626,
+        
+        Vicewinder = 34620,
+        Vicepit = 34623,
+        Hunters_Den = 34624,
+        Swiftskins_Den = 34625,
+        Hunters_Coil = 34621,
+        Swiftskins_Coil = 34622,
+        Hindsting_Strike = 34612,
+        Flanksbane_Fang = 34611,
+        Bloodied_Maw = 34619,
+        Jagged_Maw = 34618
     }
 
-    public override bool ShouldEnable => ReAction.Config.EnableDecomboLiturgy
-        || ReAction.Config.EnableDecomboEarthlyStar
-        || ReAction.Config.EnableDecomboMinorArcana
-        || ReAction.Config.EnableDecomboFireInRed
-        || ReAction.Config.EnableDecomboFire2InRed
-        || ReAction.Config.EnableDecomboBlizzardInCyan
-        || ReAction.Config.EnableDecomboBlizzard2InCyan;
+    public override bool ShouldEnable => ReAction.Config.EnableDecomboLiturgy 
+                                         || ReAction.Config.EnableDecomboEarthlyStar
+                                         || ReAction.Config.EnableDecomboMinorArcana
+                                         || ReAction.Config.EnableDecomboFireInRed
+                                         || ReAction.Config.EnableDecomboFire2InRed
+                                         || ReAction.Config.EnableDecomboBlizzardInCyan
+                                         || ReAction.Config.EnableDecomboManafiction
+                                         || ReAction.Config.EnableDecomboTen_Chi_Jin
+                                         || ReAction.Config.EnableDecomboInner_Release
+                                         || ReAction.Config.EnableDecomboSoulsow
+                                         || ReAction.Config.EnableDecomboReawaken
+                                         || ReAction.Config.EnableDecomboBlizzard2InCyan
+
+                                         || ReAction.Config.EnableDecomboVicewinder
+                                         || ReAction.Config.EnableDecomboVicepit
+                                         || ReAction.Config.EnableDecomboHunters_Den
+                                         || ReAction.Config.EnableDecomboHunters_Coil
+                                         || ReAction.Config.EnableDecomboSwiftskins_Coil
+                                         || ReAction.Config.EnableDecomboSwiftskins_Den
+                                         || ReAction.Config.EnableDecomboHindsting_Strike
+                                         || ReAction.Config.EnableDecomboFlanksbane_Fang
+                                         || ReAction.Config.EnableDecomboBloodied_Maw
+                                         || ReAction.Config.EnableDecomboJagged_Maw;
 
     protected override void Enable() => GetAdjustedActionIdHook.Enable();
     protected override void Disable() => GetAdjustedActionIdHook.Disable();
@@ -51,6 +84,38 @@ public unsafe class Decombos : PluginModule
                 return actionID;
             case ActionID.Blizzard_II_in_Cyan when ReAction.Config.EnableDecomboBlizzard2InCyan:
                 return actionID;
+            case ActionID.Manafiction when ReAction.Config.EnableDecomboManafiction:
+                return actionID;
+            case ActionID.Ten_Chi_Jin when ReAction.Config.EnableDecomboTen_Chi_Jin:
+                return actionID;
+            case ActionID.Inner_Release when ReAction.Config.EnableDecomboInner_Release:
+                return actionID;
+            case ActionID.Soulsow when ReAction.Config.EnableDecomboSoulsow:
+                return actionID;
+            case ActionID.Reawaken when ReAction.Config.EnableDecomboReawaken:
+                return actionID;
+            
+            case ActionID.Vicewinder when ReAction.Config.EnableDecomboVicewinder:
+                return actionID;
+            case ActionID.Vicepit when ReAction.Config.EnableDecomboVicepit:
+                return actionID;
+            case ActionID.Hunters_Coil when ReAction.Config.EnableDecomboHunters_Coil:
+                return actionID;
+            case ActionID.Hunters_Den when ReAction.Config.EnableDecomboHunters_Den:
+                return actionID;
+            case ActionID.Swiftskins_Coil when ReAction.Config.EnableDecomboSwiftskins_Coil:
+                return actionID;
+            case ActionID.Swiftskins_Den when ReAction.Config.EnableDecomboSwiftskins_Den:
+                return actionID;
+            case ActionID.Hindsting_Strike when ReAction.Config.EnableDecomboHindsting_Strike:
+                return actionID;
+            case ActionID.Flanksbane_Fang when ReAction.Config.EnableDecomboFlanksbane_Fang:
+                return actionID;
+            case ActionID.Bloodied_Maw when ReAction.Config.EnableDecomboBloodied_Maw:
+                return actionID;
+            case ActionID.Jagged_Maw when ReAction.Config.EnableDecomboReawaken:
+                return actionID;
+            
 
             default:
                 return ret;
