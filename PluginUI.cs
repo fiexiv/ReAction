@@ -570,24 +570,19 @@ public static class PluginUI
         if (ImGuiEx.BeginGroupBox("extra sunders", 0.5f))
         {
             save |= ImGui.Checkbox("Sunder Manafiction", ref ReAction.Config.EnableDecomboManafiction);
-            ImGuiEx.SetItemTooltip(
-                "Removes the Prefulgence proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrefulgence ID: 37007");
+            ImGuiEx.SetItemTooltip("Removes the Prefulgence proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrefulgence ID: 37007");
 
             save |= ImGui.Checkbox("Sunder Ten Chi Jin", ref ReAction.Config.EnableDecomboTen_Chi_Jin);
-            ImGuiEx.SetItemTooltip(
-                "Removes the Tenri Jindo proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nTenri Jindo ID: x");
+            ImGuiEx.SetItemTooltip("Removes the Tenri Jindo proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nTenri Jindo ID: x");
 
             save |= ImGui.Checkbox("Sunder Inner Release", ref ReAction.Config.EnableDecomboInner_Release);
-            ImGuiEx.SetItemTooltip(
-                "Removes the Primal Wrath proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrimal Wrath ID: x");
+            ImGuiEx.SetItemTooltip("Removes the Primal Wrath proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrimal Wrath ID: x");
 
             save |= ImGui.Checkbox("Sunder Soulsow", ref ReAction.Config.EnableDecomboSoulsow);
-            ImGuiEx.SetItemTooltip(
-                "Removes the Harvest Moon proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nHarvest Moon ID: x");
+            ImGuiEx.SetItemTooltip("Removes the Harvest Moon proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nHarvest Moon ID: x");
 
             save |= ImGui.Checkbox("Sunder Reawaken", ref ReAction.Config.EnableDecomboReawaken);
-            ImGuiEx.SetItemTooltip(
-                "Removes the Ouroboros proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nReawaken ID: x");
+            ImGuiEx.SetItemTooltip("Removes the Ouroboros proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nReawaken ID: x");
             
             ImGuiEx.EndGroupBox();
         }

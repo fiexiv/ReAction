@@ -17,24 +17,17 @@ public unsafe class Decombos : PluginModule
         Blizzard_II_in_Cyan = 34659,
         
         Manafiction = 7521,
-        Ten_Chi_Jin = 7403,
-        Inner_Release = 7389,
-        Soulsow = 24387,
-        Reawaken = 34626,
         
-        Vicewinder = 34620,
-        Vicepit = 34623,
-        Hunters_Den = 34624,
-        Swiftskins_Den = 34625,
-        Hunters_Coil = 34621,
-        Swiftskins_Coil = 34622,
-        Hindsting_Strike = 34612,
-        Flanksbane_Fang = 34611,
-        Bloodied_Maw = 34619,
-        Jagged_Maw = 34618
+        Ten_Chi_Jin = 7403,
+        
+        Inner_Release = 7389,
+        
+        Soulsow = 24387,
+        
+        Reawaken = 34626
     }
 
-    public override bool ShouldEnable => ReAction.Config.EnableDecomboLiturgy 
+    public override bool ShouldEnable => ReAction.Config.EnableDecomboLiturgy
                                          || ReAction.Config.EnableDecomboEarthlyStar
                                          || ReAction.Config.EnableDecomboMinorArcana
                                          || ReAction.Config.EnableDecomboFireInRed
@@ -45,18 +38,7 @@ public unsafe class Decombos : PluginModule
                                          || ReAction.Config.EnableDecomboInner_Release
                                          || ReAction.Config.EnableDecomboSoulsow
                                          || ReAction.Config.EnableDecomboReawaken
-                                         || ReAction.Config.EnableDecomboBlizzard2InCyan
-
-                                         || ReAction.Config.EnableDecomboVicewinder
-                                         || ReAction.Config.EnableDecomboVicepit
-                                         || ReAction.Config.EnableDecomboHunters_Den
-                                         || ReAction.Config.EnableDecomboHunters_Coil
-                                         || ReAction.Config.EnableDecomboSwiftskins_Coil
-                                         || ReAction.Config.EnableDecomboSwiftskins_Den
-                                         || ReAction.Config.EnableDecomboHindsting_Strike
-                                         || ReAction.Config.EnableDecomboFlanksbane_Fang
-                                         || ReAction.Config.EnableDecomboBloodied_Maw
-                                         || ReAction.Config.EnableDecomboJagged_Maw;
+                                         || ReAction.Config.EnableDecomboBlizzard2InCyan;
 
     protected override void Enable() => GetAdjustedActionIdHook.Enable();
     protected override void Disable() => GetAdjustedActionIdHook.Disable();
@@ -95,28 +77,6 @@ public unsafe class Decombos : PluginModule
             case ActionID.Reawaken when ReAction.Config.EnableDecomboReawaken:
                 return actionID;
             
-            case ActionID.Vicewinder when ReAction.Config.EnableDecomboVicewinder:
-                return actionID;
-            case ActionID.Vicepit when ReAction.Config.EnableDecomboVicepit:
-                return actionID;
-            case ActionID.Hunters_Coil when ReAction.Config.EnableDecomboHunters_Coil:
-                return actionID;
-            case ActionID.Hunters_Den when ReAction.Config.EnableDecomboHunters_Den:
-                return actionID;
-            case ActionID.Swiftskins_Coil when ReAction.Config.EnableDecomboSwiftskins_Coil:
-                return actionID;
-            case ActionID.Swiftskins_Den when ReAction.Config.EnableDecomboSwiftskins_Den:
-                return actionID;
-            case ActionID.Hindsting_Strike when ReAction.Config.EnableDecomboHindsting_Strike:
-                return actionID;
-            case ActionID.Flanksbane_Fang when ReAction.Config.EnableDecomboFlanksbane_Fang:
-                return actionID;
-            case ActionID.Bloodied_Maw when ReAction.Config.EnableDecomboBloodied_Maw:
-                return actionID;
-            case ActionID.Jagged_Maw when ReAction.Config.EnableDecomboReawaken:
-                return actionID;
-            
-
             default:
                 return ret;
         }
