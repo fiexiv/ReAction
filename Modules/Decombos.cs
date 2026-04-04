@@ -24,7 +24,9 @@ public unsafe class Decombos : PluginModule
         
         Soulsow = 24387,
         
-        Reawaken = 34626
+        Reawaken = 34626,
+        
+        Astral_Flow = 25822
     }
 
     public override bool ShouldEnable => ReAction.Config.EnableDecomboLiturgy
@@ -38,7 +40,8 @@ public unsafe class Decombos : PluginModule
                                          || ReAction.Config.EnableDecomboInner_Release
                                          || ReAction.Config.EnableDecomboSoulsow
                                          || ReAction.Config.EnableDecomboReawaken
-                                         || ReAction.Config.EnableDecomboBlizzard2InCyan;
+                                         || ReAction.Config.EnableDecomboBlizzard2InCyan
+                                         || ReAction.Config.EnableDecomboAstralFlow;
 
     protected override void Enable() => GetAdjustedActionIdHook.Enable();
     protected override void Disable() => GetAdjustedActionIdHook.Disable();
@@ -75,6 +78,8 @@ public unsafe class Decombos : PluginModule
             case ActionID.Soulsow when ReAction.Config.EnableDecomboSoulsow:
                 return actionID;
             case ActionID.Reawaken when ReAction.Config.EnableDecomboReawaken:
+                return actionID;
+            case ActionID.Astral_Flow when ReAction.Config.EnableDecomboAstralFlow:
                 return actionID;
             
             default:

@@ -584,6 +584,9 @@ public static class PluginUI
             save |= ImGui.Checkbox("Sunder Reawaken", ref ReAction.Config.EnableDecomboReawaken);
             ImGuiEx.SetItemTooltip("Removes the Ouroboros proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nReawaken ID: x");
             
+            save |= ImGui.Checkbox("Sunder Astral Flow", ref ReAction.Config.EnableDecomboAstralFlow);
+            ImGuiEx.SetItemTooltip("Removes Astral Flow procs");
+            
             ImGuiEx.EndGroupBox();
         }
 

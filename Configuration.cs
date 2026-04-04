@@ -117,6 +117,7 @@ public class Configuration : PluginConfiguration, IPluginConfiguration
     public bool EnableDecomboInner_Release = false;
     public bool EnableDecomboSoulsow = false;
     public bool EnableDecomboReawaken = false;
+    public bool EnableDecomboAstralFlow = false;
 
     public override void Initialize() { }
 
