@@ -552,11 +552,88 @@ public static class PluginUI
 
             ImGuiEx.EndGroupBox();
         }
-
+        
         ImGui.SameLine();
-
-        if (ImGuiEx.BeginGroupBox("Sunderings", 0.5f))
+        
+        if (ImGuiEx.BeginGroupBox("Viper Specific (Tick all for rework)", 0.5f))
         {
+            save |= ImGui.Checkbox("Sunder Serpents tail", ref ReAction.Config.EnableDecomboSerpentTail);
+            ImGuiEx.SetItemTooltip("For use w my xivcombo");
+
+            save |= ImGui.Checkbox("Vicepit", ref ReAction.Config.EnableDecomboVicepit);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Vicewinder", ref ReAction.Config.EnableDecomboVicewinder);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Steel Maw", ref ReAction.Config.EnableDecomboSteelMaw);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Reaving Maw", ref ReAction.Config.EnableDecomboReavingMaw);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Hunters Bite", ref ReAction.Config.EnableDecomboHuntersBite);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Swiftskin's Bite", ref ReAction.Config.EnableDecomboSwiftskinBite);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Jagged Maw", ref ReAction.Config.EnableDecomboJaggedMaw);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Bloodied Maw", ref ReAction.Config.EnableDecomboBloodiedMaw);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Hunters Den", ref ReAction.Config.EnableDecomboHuntersDen);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Swiftskin's Den", ref ReAction.Config.EnableDecomboSwiftskinDen);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Hunters Coil", ref ReAction.Config.EnableDecomboHuntersCoil);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Swiftskin's Sting", ref ReAction.Config.EnableDecomboSwiftskinSting);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Flanksting Strike", ref ReAction.Config.EnableDecomboFlankStingStrike);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Flanksbane Fang", ref ReAction.Config.EnableDecomboFlankBaneFang);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Hindsting Strike", ref ReAction.Config.EnableDecomboHindStingStrike);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Hindsbane Fang", ref ReAction.Config.EnableDecomboHindBaneFang);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            save |= ImGui.Checkbox("Reawaken", ref ReAction.Config.EnableDecomboReawaken);
+            ImGuiEx.SetItemTooltip("Sunders");
+            
+            ImGuiEx.EndGroupBox();
+        }
+        
+        if (ImGuiEx.BeginGroupBox("sunders", 0.5f))
+        {
+            save |= ImGui.Checkbox("Sunder Manafiction", ref ReAction.Config.EnableDecomboManafiction);
+            ImGuiEx.SetItemTooltip("Removes the Prefulgence proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrefulgence ID: 37007");
+
+            save |= ImGui.Checkbox("Sunder Ten Chi Jin", ref ReAction.Config.EnableDecomboTen_Chi_Jin);
+            ImGuiEx.SetItemTooltip("Removes the Tenri Jindo proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nTenri Jindo ID: x");
+
+            save |= ImGui.Checkbox("Sunder Inner Release", ref ReAction.Config.EnableDecomboInner_Release);
+            ImGuiEx.SetItemTooltip("Removes the Primal Wrath proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrimal Wrath ID: x");
+
+            save |= ImGui.Checkbox("Sunder Soulsow", ref ReAction.Config.EnableDecomboSoulsow);
+            ImGuiEx.SetItemTooltip("Removes the Harvest Moon proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nHarvest Moon ID: x");
+            
+            save |= ImGui.Checkbox("Sunder Astral Flow", ref ReAction.Config.EnableDecomboAstralFlow);
+            ImGuiEx.SetItemTooltip("Removes Astral Flow procs");
+            
+            save |= ImGui.Checkbox("Sunder Hammer Stamp", ref ReAction.Config.EnableDecomboHammerStamp);
+            ImGuiEx.SetItemTooltip("Removes Stamps");
+            
             save |= ImGui.Checkbox("Sunder Fire in Red", ref ReAction.Config.EnableDecomboFireInRed);
             ImGuiEx.SetItemTooltip("Removes the Fire in Red combo. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nAero in Green ID: 34651\nWater in Blue ID: 34652");
 
@@ -573,34 +650,13 @@ public static class PluginUI
             ImGuiEx.SetItemTooltip("Removes the Liturgy of the Bell combo. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nLiturgy of the Bell (Detonate) ID: 28509");
 
             save |= ImGui.Checkbox("Sunder Earthly Star", ref ReAction.Config.EnableDecomboEarthlyStar);
-            ImGuiEx.SetItemTooltip("Removes the Earthly Star combo. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nStellar Detonation ID: 8324");
 
+            
             ImGuiEx.EndGroupBox();
         }
         
-        if (ImGuiEx.BeginGroupBox("extra sunders", 0.5f))
-        {
-            save |= ImGui.Checkbox("Sunder Manafiction", ref ReAction.Config.EnableDecomboManafiction);
-            ImGuiEx.SetItemTooltip("Removes the Prefulgence proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrefulgence ID: 37007");
-
-            save |= ImGui.Checkbox("Sunder Ten Chi Jin", ref ReAction.Config.EnableDecomboTen_Chi_Jin);
-            ImGuiEx.SetItemTooltip("Removes the Tenri Jindo proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nTenri Jindo ID: x");
-
-            save |= ImGui.Checkbox("Sunder Inner Release", ref ReAction.Config.EnableDecomboInner_Release);
-            ImGuiEx.SetItemTooltip("Removes the Primal Wrath proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrimal Wrath ID: x");
-
-            save |= ImGui.Checkbox("Sunder Soulsow", ref ReAction.Config.EnableDecomboSoulsow);
-            ImGuiEx.SetItemTooltip("Removes the Harvest Moon proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nHarvest Moon ID: x");
-
-            save |= ImGui.Checkbox("Sunder Reawaken", ref ReAction.Config.EnableDecomboReawaken);
-            ImGuiEx.SetItemTooltip("Removes the Ouroboros proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nReawaken ID: x");
-            
-            save |= ImGui.Checkbox("Sunder Astral Flow", ref ReAction.Config.EnableDecomboAstralFlow);
-            ImGuiEx.SetItemTooltip("Removes Astral Flow procs");
-            
-            ImGuiEx.EndGroupBox();
-        }
-
+        ImGui.SameLine();
+        
         if (ImGuiEx.BeginGroupBox("Misc", 0.5f))
         {
             save |= ImGui.Checkbox("Enable Frame Alignment", ref ReAction.Config.EnableFrameAlignment);
@@ -626,8 +682,6 @@ public static class PluginUI
 
             ImGuiEx.EndGroupBox();
         }
-
-        ImGui.SameLine();
 
         if (ImGuiEx.BeginGroupBox("Place on Hotbar (HOVER ME FOR INFORMATION)", 0.5f, new ImGuiEx.GroupBoxOptions
         {

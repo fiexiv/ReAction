@@ -118,7 +118,30 @@ public class Configuration : PluginConfiguration, IPluginConfiguration
     public bool EnableDecomboInner_Release = false;
     public bool EnableDecomboSoulsow = false;
     public bool EnableDecomboReawaken = false;
+    public bool EnableDecomboHuntersCoil = true;
+    public bool EnableDecomboSwiftskinCoil = true;
+    public bool EnableDecomboReavingFang = true;
+    public bool EnableDecomboHuntersSting = true;
+    public bool EnableDecomboSwiftskinSting = true;
+    public bool EnableDecomboFlankStingStrike = true;
+    public bool EnableDecomboFlankBaneFang = true;
+    public bool EnableDecomboHindStingStrike = true;
+    public bool EnableDecomboHindBaneFang = true;
+    public bool EnableDecomboSteelFang = true;
+    public bool EnableDecomboSteelMaw = true;
+    public bool EnableDecomboReavingMaw = true;
+    public bool EnableDecomboHuntersBite = true;
+    public bool EnableDecomboSwiftskinBite = true;
+    public bool EnableDecomboJaggedMaw = true;
+    public bool EnableDecomboBloodiedMaw = true;
+    public bool EnableDecomboVicepit = true;
+    public bool EnableDecomboVicewinder = true;
+    public bool EnableDecomboHuntersDen = true;
+    public bool EnableDecomboSwiftskinDen = true;
     public bool EnableDecomboAstralFlow = false;
+    public bool EnableDecomboHammerStamp = false;
+    public bool EnableDecomboSerpentTail = false;
+    
 
     public override void Initialize() { }
 
