@@ -555,58 +555,48 @@ public static class PluginUI
         
         ImGui.SameLine();
         
-        if (ImGuiEx.BeginGroupBox("Viper Specific (Tick all for rework)", 0.5f))
+        if (ImGuiEx.BeginGroupBox("Place on Hotbar (HOVER ME FOR INFORMATION)", 0.5f, new ImGuiEx.GroupBoxOptions
+            {
+                HeaderTextAction = () => ImGuiEx.SetItemTooltip(
+                    "This will allow you to place various things on the hotbar that you can't normally." +
+                    "\nIf you don't know what this can be used for, don't touch it." +
+                    "\nSome examples of things you can do:" +
+                    "\n\tPlace a certain action on the hotbar to be used with one of the \"Sundering\" features. The IDs are in each setting's tooltip." +
+                    "\n\tPlace a certain doze and sit emote on the hotbar (Emote, 88 and 95)." +
+                    "\n\tPlace a currency (Item, 1-99) on the hotbar to see how much you have without opening the currency menu." +
+                    "\n\tRevive flying mount roulette (GeneralAction, 24).")
+            }))
+        {
+            ImGui.Combo("Bar", ref hotbar, "1\02\03\04\05\06\07\08\09\010\0XHB 1\0XHB 2\0XHB 3\0XHB 4\0XHB 5\0XHB 6\0XHB 7\0XHB 8");
+            ImGui.Combo("Slot", ref hotbarSlot, "1\02\03\04\05\06\07\08\09\010\011\012\013\014\015\016");
+            var hotbarSlotType = Enum.GetName(typeof(RaptureHotbarModule.HotbarSlotType), commandType) ?? commandType.ToString();
+            if (ImGui.BeginCombo("Type", hotbarSlotType))
+            {
+                for (int i = 1; i <= 32; i++)
+                {
+                    if (!ImGui.Selectable($"{Enum.GetName(typeof(RaptureHotbarModule.HotbarSlotType), i) ?? i.ToString()}##{i}", commandType == i)) continue;
+                    commandType = i;
+                }
+                ImGui.EndCombo();
+            }
+
+            DrawHotbarIDInput((RaptureHotbarModule.HotbarSlotType)commandType);
+
+            if (ImGui.Button("Execute"))
+                Game.SetHotbarSlot(hotbar, hotbarSlot, (byte)commandType, commandID);
+            ImGuiEx.EndGroupBox();
+        }
+
+        if (save)
+            ReAction.Config.Save();
+        
+        if (ImGuiEx.BeginGroupBox("Viper", 0.5f))
         {
             save |= ImGui.Checkbox("Sunder Serpents tail", ref ReAction.Config.EnableDecomboSerpentTail);
             ImGuiEx.SetItemTooltip("For use w my xivcombo");
-
-            save |= ImGui.Checkbox("Vicepit", ref ReAction.Config.EnableDecomboVicepit);
-            ImGuiEx.SetItemTooltip("Sunders");
             
-            save |= ImGui.Checkbox("Vicewinder", ref ReAction.Config.EnableDecomboVicewinder);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Steel Maw", ref ReAction.Config.EnableDecomboSteelMaw);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Reaving Maw", ref ReAction.Config.EnableDecomboReavingMaw);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Hunters Bite", ref ReAction.Config.EnableDecomboHuntersBite);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Swiftskin's Bite", ref ReAction.Config.EnableDecomboSwiftskinBite);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Jagged Maw", ref ReAction.Config.EnableDecomboJaggedMaw);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Bloodied Maw", ref ReAction.Config.EnableDecomboBloodiedMaw);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Hunters Den", ref ReAction.Config.EnableDecomboHuntersDen);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Swiftskin's Den", ref ReAction.Config.EnableDecomboSwiftskinDen);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Hunters Coil", ref ReAction.Config.EnableDecomboHuntersCoil);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Swiftskin's Sting", ref ReAction.Config.EnableDecomboSwiftskinSting);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Flanksting Strike", ref ReAction.Config.EnableDecomboFlankStingStrike);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Flanksbane Fang", ref ReAction.Config.EnableDecomboFlankBaneFang);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Hindsting Strike", ref ReAction.Config.EnableDecomboHindStingStrike);
-            ImGuiEx.SetItemTooltip("Sunders");
-            
-            save |= ImGui.Checkbox("Hindsbane Fang", ref ReAction.Config.EnableDecomboHindBaneFang);
-            ImGuiEx.SetItemTooltip("Sunders");
+            save |= ImGui.Checkbox("Viper GCD", ref ReAction.Config.EnableDecomboViperGCD);
+            ImGuiEx.SetItemTooltip("Removes all procs from gcds");
             
             save |= ImGui.Checkbox("Reawaken", ref ReAction.Config.EnableDecomboReawaken);
             ImGuiEx.SetItemTooltip("Sunders");
@@ -614,26 +604,10 @@ public static class PluginUI
             ImGuiEx.EndGroupBox();
         }
         
-        if (ImGuiEx.BeginGroupBox("sunders", 0.5f))
+        ImGui.SameLine();
+        
+        if (ImGuiEx.BeginGroupBox("Pictomancer", 0.5f))
         {
-            save |= ImGui.Checkbox("Sunder Manafiction", ref ReAction.Config.EnableDecomboManafiction);
-            ImGuiEx.SetItemTooltip("Removes the Prefulgence proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrefulgence ID: 37007");
-
-            save |= ImGui.Checkbox("Sunder Ten Chi Jin", ref ReAction.Config.EnableDecomboTen_Chi_Jin);
-            ImGuiEx.SetItemTooltip("Removes the Tenri Jindo proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nTenri Jindo ID: x");
-
-            save |= ImGui.Checkbox("Sunder Inner Release", ref ReAction.Config.EnableDecomboInner_Release);
-            ImGuiEx.SetItemTooltip("Removes the Primal Wrath proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrimal Wrath ID: x");
-
-            save |= ImGui.Checkbox("Sunder Soulsow", ref ReAction.Config.EnableDecomboSoulsow);
-            ImGuiEx.SetItemTooltip("Removes the Harvest Moon proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nHarvest Moon ID: x");
-            
-            save |= ImGui.Checkbox("Sunder Astral Flow", ref ReAction.Config.EnableDecomboAstralFlow);
-            ImGuiEx.SetItemTooltip("Removes Astral Flow procs");
-            
-            save |= ImGui.Checkbox("Sunder Hammer Stamp", ref ReAction.Config.EnableDecomboHammerStamp);
-            ImGuiEx.SetItemTooltip("Removes Stamps");
-            
             save |= ImGui.Checkbox("Sunder Fire in Red", ref ReAction.Config.EnableDecomboFireInRed);
             ImGuiEx.SetItemTooltip("Removes the Fire in Red combo. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nAero in Green ID: 34651\nWater in Blue ID: 34652");
 
@@ -645,17 +619,89 @@ public static class PluginUI
 
             save |= ImGui.Checkbox("Sunder Blizzard II in Cyan", ref ReAction.Config.EnableDecomboBlizzard2InCyan);
             ImGuiEx.SetItemTooltip("Removes the Blizzard II in Cyan combo. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nStone II in Yellow ID: 34660\nThunder II in Magenta ID: 34661");
-
-            save |= ImGui.Checkbox("Sunder Liturgy of the Bell", ref ReAction.Config.EnableDecomboLiturgy);
-            ImGuiEx.SetItemTooltip("Removes the Liturgy of the Bell combo. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nLiturgy of the Bell (Detonate) ID: 28509");
-
-            save |= ImGui.Checkbox("Sunder Earthly Star", ref ReAction.Config.EnableDecomboEarthlyStar);
-
+            
+            save |= ImGui.Checkbox("Sunder Hammer Stamp", ref ReAction.Config.EnableDecomboHammerStamp);
+            ImGuiEx.SetItemTooltip("Removes Stamps");
+            
+            ImGuiEx.EndGroupBox();
+        }
+        
+        if (ImGuiEx.BeginGroupBox("Dark Knight", 0.5f))
+        {
+            save |= ImGui.Checkbox("Sunder Bloodspiller", ref ReAction.Config.EnableDecomboBloodspiller);
+            ImGuiEx.SetItemTooltip("Removes Delirium combo");
+            
+            save |= ImGui.Checkbox("Sunder Quietus", ref ReAction.Config.EnableDecomboQuietus);
+            ImGuiEx.SetItemTooltip("Removes Delirium combo");
+            
+            save |= ImGui.Checkbox("Sunder Scarlet Delirium", ref ReAction.Config.EnableDecomboScarletDelirium);
+            ImGuiEx.SetItemTooltip("Removes Delirium combo");
+            
+            save |= ImGui.Checkbox("Sunder Comeuppance", ref ReAction.Config.EnableDecomboComeuppance);
+            ImGuiEx.SetItemTooltip("Removes Delirium combo");
             
             ImGuiEx.EndGroupBox();
         }
         
         ImGui.SameLine();
+
+        if (ImGuiEx.BeginGroupBox("Gunbreaker", 0.5f))
+        {
+            save |= ImGui.Checkbox("Gnahsing fang", ref ReAction.Config.EnableDecomboGnashing);
+            ImGuiEx.SetItemTooltip("test");
+            
+            save |= ImGui.Checkbox("Savage claw", ref ReAction.Config.EnableDecomboSavage);
+            ImGuiEx.SetItemTooltip("test");
+
+            save |= ImGui.Checkbox("Bloodfest", ref ReAction.Config.EnableDecomboBloodfest);
+            ImGuiEx.SetItemTooltip("Bloodfest");
+            
+            save |= ImGui.Checkbox("Reign of Beasts", ref ReAction.Config.EnableDecomboReignOfBeasts);
+            ImGuiEx.SetItemTooltip("alt bloodfest option");
+
+            ImGuiEx.EndGroupBox();
+        }
+
+        if (ImGuiEx.BeginGroupBox("Dragoon", 0.5f))
+        {
+            save |= ImGui.Checkbox("Sunder Fang and claw", ref ReAction.Config.EnableDecomboFangAndClaw);
+            ImGuiEx.SetItemTooltip("drakesbane");
+            
+            save |= ImGui.Checkbox("Sunder Wheeling Thrust", ref ReAction.Config.EnableDecomboWheelingThrust);
+            ImGuiEx.SetItemTooltip("drakesbane");
+            
+            ImGuiEx.EndGroupBox();
+        }
+                
+        ImGui.SameLine();
+        
+        if (ImGuiEx.BeginGroupBox("Red Mage", 0.5f))
+        {
+            save |= ImGui.Checkbox("Verthunder II Veraero II", ref ReAction.Config.EnableDecomboVerAoE);
+            ImGuiEx.SetItemTooltip("xivcombo doesnt WORK grrrrrr");
+            
+            ImGuiEx.EndGroupBox();
+        }
+
+        if (ImGuiEx.BeginGroupBox("Misc Sunders", 0.5f))
+        {
+            save |= ImGui.Checkbox("Sunder Ten Chi Jin", ref ReAction.Config.EnableDecomboTen_Chi_Jin);
+            ImGuiEx.SetItemTooltip("Removes the Tenri Jindo proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nTenri Jindo ID: x");
+
+            save |= ImGui.Checkbox("Sunder Soulsow", ref ReAction.Config.EnableDecomboSoulsow);
+            ImGuiEx.SetItemTooltip("Removes the Harvest Moon proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nHarvest Moon ID: x");
+            
+            save |= ImGui.Checkbox("Sunder Inner Release", ref ReAction.Config.EnableDecomboInner_Release);
+            ImGuiEx.SetItemTooltip("Removes the Primal Wrath proc. You will need to use the hotbar\nfeature below to place it on your hotbar in order to use it again.\nPrimal Wrath ID: x");
+                       
+            save |= ImGui.Checkbox("Sunder Astral Flow", ref ReAction.Config.EnableDecomboAstralFlow);
+            ImGuiEx.SetItemTooltip("Removes Astral Flow procs");
+            
+            save |= ImGui.Checkbox("Sunder Ogi Namikiri", ref ReAction.Config.EnableDecomboOgiNamikiri);
+            ImGuiEx.SetItemTooltip("Removes Kaeshi Namikiri");
+            
+            ImGuiEx.EndGroupBox();
+        }
         
         if (ImGuiEx.BeginGroupBox("Misc", 0.5f))
         {
@@ -683,40 +729,7 @@ public static class PluginUI
             ImGuiEx.EndGroupBox();
         }
 
-        if (ImGuiEx.BeginGroupBox("Place on Hotbar (HOVER ME FOR INFORMATION)", 0.5f, new ImGuiEx.GroupBoxOptions
-        {
-            HeaderTextAction = () => ImGuiEx.SetItemTooltip(
-                "This will allow you to place various things on the hotbar that you can't normally." +
-                "\nIf you don't know what this can be used for, don't touch it." +
-                "\nSome examples of things you can do:" +
-                "\n\tPlace a certain action on the hotbar to be used with one of the \"Sundering\" features. The IDs are in each setting's tooltip." +
-                "\n\tPlace a certain doze and sit emote on the hotbar (Emote, 88 and 95)." +
-                "\n\tPlace a currency (Item, 1-99) on the hotbar to see how much you have without opening the currency menu." +
-                "\n\tRevive flying mount roulette (GeneralAction, 24).")
-        }))
-        {
-            ImGui.Combo("Bar", ref hotbar, "1\02\03\04\05\06\07\08\09\010\0XHB 1\0XHB 2\0XHB 3\0XHB 4\0XHB 5\0XHB 6\0XHB 7\0XHB 8");
-            ImGui.Combo("Slot", ref hotbarSlot, "1\02\03\04\05\06\07\08\09\010\011\012\013\014\015\016");
-            var hotbarSlotType = Enum.GetName(typeof(RaptureHotbarModule.HotbarSlotType), commandType) ?? commandType.ToString();
-            if (ImGui.BeginCombo("Type", hotbarSlotType))
-            {
-                for (int i = 1; i <= 32; i++)
-                {
-                    if (!ImGui.Selectable($"{Enum.GetName(typeof(RaptureHotbarModule.HotbarSlotType), i) ?? i.ToString()}##{i}", commandType == i)) continue;
-                    commandType = i;
-                }
-                ImGui.EndCombo();
-            }
-
-            DrawHotbarIDInput((RaptureHotbarModule.HotbarSlotType)commandType);
-
-            if (ImGui.Button("Execute"))
-                Game.SetHotbarSlot(hotbar, hotbarSlot, (byte)commandType, commandID);
-            ImGuiEx.EndGroupBox();
-        }
-
-        if (save)
-            ReAction.Config.Save();
+        
     }
 
     public static void DrawHotbarIDInput(RaptureHotbarModule.HotbarSlotType slotType)
