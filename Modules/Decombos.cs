@@ -50,29 +50,7 @@ public unsafe class Decombos : PluginModule
         Swiftskin_Den = 34625,
         SerpentTail = 35920,
         
-        Astral_Flow = 25822,
-        
-        Quietus = 7391,
-        Bloodspiller = 7392,
-        Scarlet_Delirium = 36928,
-        Comeuppance = 36929,
-        
-        Fang_And_Claw = 3554,
-        Wheeling_Thrust = 3556,
-        
-        Savage = 16147,
-        Gnashing = 16146,
-        Bloodfest = 16164,
-        ReignOfBeasts = 36937,
-        
-        OgiNamikiri = 25781,
-        
-        Jolt = 37004,
-        Impact = 16526,
-        Moulinet = 7513,
-        Verthunder2 = 16524,
-        Veraero2 = 16525
-        
+        Astral_Flow = 25822
         
     }
 
@@ -110,19 +88,8 @@ public unsafe class Decombos : PluginModule
                                          || ReAction.Config.EnableDecomboHuntersDen
                                          || ReAction.Config.EnableDecomboSwiftskinDen
                                          || ReAction.Config.EnableDecomboHammerStamp
-                                         || ReAction.Config.EnableDecomboSerpentTail
-                                         || ReAction.Config.EnableDecomboBloodspiller
-                                         || ReAction.Config.EnableDecomboScarletDelirium
-                                         || ReAction.Config.EnableDecomboComeuppance
-                                         || ReAction.Config.EnableDecomboQuietus
-                                         || ReAction.Config.EnableDecomboFangAndClaw
-                                         || ReAction.Config.EnableDecomboWheelingThrust
-                                         || ReAction.Config.EnableDecomboGnashing
-                                         || ReAction.Config.EnableDecomboSavage
-                                         || ReAction.Config.EnableDecomboBloodfest
-                                         || ReAction.Config.EnableDecomboVerAoE
-                                         || ReAction.Config.EnableDecomboOgiNamikiri
-                                         || ReAction.Config.EnableDecomboReignOfBeasts;
+                                         || ReAction.Config.EnableDecomboSerpentTail;
+                                         
 
     protected override void Enable() => GetAdjustedActionIdHook.Enable();
     protected override void Disable() => GetAdjustedActionIdHook.Disable();
@@ -160,46 +127,46 @@ public unsafe class Decombos : PluginModule
             
             case ActionID.Reawaken when ReAction.Config.EnableDecomboReawaken:
                 return actionID;
-            case ActionID.Hunters_Coil when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Hunters_Coil when ReAction.Config.EnableDecomboHuntersCoil:
                 return actionID;
-            case ActionID.Swiftskin_Coil when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Swiftskin_Coil when ReAction.Config.EnableDecomboSwiftskinCoil:
                 return actionID;
-            case ActionID.Reaving_Fangs when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Reaving_Fangs when ReAction.Config.EnableDecomboReavingFang:
                 return actionID;
-            case ActionID.Steel_Fang when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Steel_Fang when ReAction.Config.EnableDecomboSteelFang:
                 return actionID;
-            case ActionID.Hunters_Sting when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Hunters_Sting when ReAction.Config.EnableDecomboHuntersSting:
                 return actionID;
-            case ActionID.Swiftskins_Sting when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Swiftskins_Sting when ReAction.Config.EnableDecomboSwiftskinSting:
                 return actionID;
-            case ActionID.Flanksting_Strike when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Flanksting_Strike when ReAction.Config.EnableDecomboFlankStingStrike:
                 return actionID;
-            case ActionID.Flanksbane_Fang when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Flanksbane_Fang when ReAction.Config.EnableDecomboFlankBaneFang:
                 return actionID;
-            case ActionID.Hindsting_Strike when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Hindsting_Strike when ReAction.Config.EnableDecomboHindStingStrike:
                 return actionID;
-            case ActionID.Hindsbane_Fang when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Hindsbane_Fang when ReAction.Config.EnableDecomboHindBaneFang:
                 return actionID;
             
-            case ActionID.Steel_Maw when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Steel_Maw when ReAction.Config.EnableDecomboSteelMaw:
                 return actionID;
-            case ActionID.Reaving_Maw when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Reaving_Maw when ReAction.Config.EnableDecomboReavingMaw:
                 return actionID;
-            case ActionID.Hunters_Bite when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Hunters_Bite when ReAction.Config.EnableDecomboHuntersBite:
                 return actionID;
-            case ActionID.Swiftskins_Bite when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Swiftskins_Bite when ReAction.Config.EnableDecomboSwiftskinBite:
                 return actionID;
-            case ActionID.Jagged_Maw when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Jagged_Maw when ReAction.Config.EnableDecomboJaggedMaw:
                 return actionID;
-            case ActionID.Bloodied_Maw when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Bloodied_Maw when ReAction.Config.EnableDecomboBloodiedMaw:
                 return actionID;
-            case ActionID.VicePit when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.VicePit when ReAction.Config.EnableDecomboVicepit:
                 return actionID;
-            case ActionID.Vicewinder when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Vicewinder when ReAction.Config.EnableDecomboVicewinder:
                 return actionID;
-            case ActionID.Hunters_Den when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Hunters_Den when ReAction.Config.EnableDecomboHuntersDen:
                 return actionID;
-            case ActionID.Swiftskin_Den when ReAction.Config.EnableDecomboViperGCD:
+            case ActionID.Swiftskin_Den when ReAction.Config.EnableDecomboSwiftskinDen:
                 return actionID;
             
             
@@ -210,46 +177,6 @@ public unsafe class Decombos : PluginModule
                 return actionID;
             
             case ActionID.SerpentTail when ReAction.Config.EnableDecomboSerpentTail:
-                return actionID;
-            
-            case ActionID.Bloodspiller when ReAction.Config.EnableDecomboBloodspiller:
-                return actionID;
-            
-            case ActionID.Scarlet_Delirium when ReAction.Config.EnableDecomboScarletDelirium:
-                return actionID;
-            
-            case ActionID.Comeuppance when ReAction.Config.EnableDecomboComeuppance:
-                return actionID;
-            
-            case ActionID.Quietus when ReAction.Config.EnableDecomboQuietus:
-                return actionID;
-            
-            
-            case ActionID.Fang_And_Claw when ReAction.Config.EnableDecomboFangAndClaw:
-                return actionID;
-            
-            case ActionID.Wheeling_Thrust when ReAction.Config.EnableDecomboWheelingThrust:
-                return actionID;
-
-            case ActionID.Gnashing when ReAction.Config.EnableDecomboGnashing:
-                return actionID;
-            
-            case ActionID.Savage when ReAction.Config.EnableDecomboSavage:
-                return actionID;
-            
-            case ActionID.Bloodfest when ReAction.Config.EnableDecomboBloodfest:
-                return actionID;
-            
-            case ActionID.ReignOfBeasts when ReAction.Config.EnableDecomboReignOfBeasts:
-                return actionID;
-            
-            case ActionID.Verthunder2 when ReAction.Config.EnableDecomboVerAoE:
-                return actionID;
-            
-            case ActionID.Veraero2 when ReAction.Config.EnableDecomboVerAoE:
-                return actionID;
-            
-            case ActionID.OgiNamikiri when ReAction.Config.EnableDecomboOgiNamikiri:
                 return actionID;
             
             default:

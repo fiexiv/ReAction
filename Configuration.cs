@@ -117,7 +117,6 @@ public class Configuration : PluginConfiguration, IPluginConfiguration
     public bool EnableDecomboTen_Chi_Jin = false;
     public bool EnableDecomboInner_Release = false;
     public bool EnableDecomboSoulsow = false;
-    
     public bool EnableDecomboReawaken = false;
     public bool EnableDecomboHuntersCoil = true;
     public bool EnableDecomboSwiftskinCoil = true;
@@ -139,24 +138,10 @@ public class Configuration : PluginConfiguration, IPluginConfiguration
     public bool EnableDecomboVicewinder = true;
     public bool EnableDecomboHuntersDen = true;
     public bool EnableDecomboSwiftskinDen = true;
-
-    public bool EnableDecomboViperGCD = false;
-    
     public bool EnableDecomboAstralFlow = false;
     public bool EnableDecomboHammerStamp = false;
     public bool EnableDecomboSerpentTail = false;
-    public bool EnableDecomboBloodspiller = false;
-    public bool EnableDecomboScarletDelirium = false;
-    public bool EnableDecomboComeuppance = false;
-    public bool EnableDecomboQuietus = false;
-    public bool EnableDecomboFangAndClaw = false;
-    public bool EnableDecomboWheelingThrust = false;
-    public bool EnableDecomboGnashing = false;
-    public bool EnableDecomboSavage = false;
-    public bool EnableDecomboBloodfest = false;
-    public bool EnableDecomboVerAoE = false;
-    public bool EnableDecomboReignOfBeasts = false;
-    public bool EnableDecomboOgiNamikiri = false;
+    
 
     public override void Initialize() { }
 
